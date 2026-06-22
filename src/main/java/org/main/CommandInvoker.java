@@ -11,7 +11,7 @@ public class CommandInvoker {
      * @param command the command to be executed
      * @param args  pass any number of String arguments
      */
-    public void executeCommand(Command command, String... args) {
+    public void executeCommand(Command command, String[] args) {
         command.execute(args);
         this.commandHistory.push(command);
     }

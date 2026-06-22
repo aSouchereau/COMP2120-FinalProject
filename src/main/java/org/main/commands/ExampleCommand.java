@@ -3,7 +3,7 @@ package org.main.commands;
 public class ExampleCommand extends Command {
 
     public static String NAME = "example";
-    public static String DESC = "List command options and USAGE information.";
+    public static String DESC = "Example command description";
     public static String USAGE = "example <arg1> <arg2> <arg3> ...";
 
     @Override

@@ -25,7 +25,6 @@ public class HelpCommand extends Command {
     @Override
     public void execute(String[] args) {
         System.out.println("Command List:");
-        System.out.println("--------------");
         for (Map.Entry<String, Supplier<Command>> entry : commandRegistry.entrySet()) {
             Command command = entry.getValue().get();
             System.out.println("\t " + command.getName() + " - Usage: " + command.getUsage());
