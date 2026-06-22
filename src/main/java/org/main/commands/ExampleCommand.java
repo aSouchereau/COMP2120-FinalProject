@@ -4,20 +4,9 @@ public class ExampleCommand extends Command {
 
     int exampleCounter = 0;
 
-    @Override
-    public String getName() {
-        return "example";
-    }
-
-    @Override
-    public String getDescription() {
-        return "This is an example command.";
-    }
-
-    @Override
-    public String getUsage() {
-        return "example <argument1> <argument2> <argument3> ...";
-    }
+    public static String name = "example";
+    public static String description = "List command options and usage information.";
+    public static String usage = "example <arg1> <arg2> <arg3> ...";
 
     @Override
     public void execute(String[] args) {

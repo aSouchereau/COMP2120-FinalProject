@@ -1,10 +1,6 @@
 package org.main.commands;
 
 public abstract class Command {
-    public abstract String getName();
-    public abstract String getDescription();
-    public abstract String getUsage();
-
     /**
      * @param args unstructured array of String arguments.
      *             Make sure to document what each argument index corresponds to.

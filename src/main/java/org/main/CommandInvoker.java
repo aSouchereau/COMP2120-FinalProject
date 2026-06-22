@@ -5,7 +5,7 @@ import org.main.commands.Command;
 import java.util.Stack;
 
 public class CommandInvoker {
-    private final Stack<Command> commandHistory = new Stack<Command>();
+    private final Stack<Command> commandHistory = new Stack<>();
 
     /**
      * @param command the command to be executed
