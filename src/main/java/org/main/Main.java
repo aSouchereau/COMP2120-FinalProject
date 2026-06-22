@@ -12,13 +12,13 @@ public class Main {
     private static final Map<String, Supplier<Command>> commandRegistry = new HashMap<>();
 
     private static void registerCommands() {
-        commandRegistry.put(HelpCommand.name, HelpCommand::new);
-        commandRegistry.put(ExampleCommand.name, HelpCommand::new);
+        commandRegistry.put(HelpCommand.NAME, () -> new HelpCommand(commandRegistry));
+        commandRegistry.put(ExampleCommand.NAME, ExampleCommand::new);
     }
 
     public static void main(String[] args) {
         registerCommands();
-        invoker.executeCommand(commandRegistry.get(HelpCommand.name).get());
+        invoker.executeCommand(commandRegistry.get(HelpCommand.NAME).get());
         invoker.undoCommand();
     }
 }

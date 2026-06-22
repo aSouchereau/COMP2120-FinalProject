@@ -1,17 +1,36 @@
 package org.main.commands;
 
+import java.util.Map;
+import java.util.function.Supplier;
+
 public class HelpCommand extends Command {
 
-    public static String name = "help";
-    public static String description = "List command options and usage information.";
-    public static String usage = "help";
+    public static String NAME = "help";
+    public static String DESC = "List command options and USAGE information.";
+    public static String USAGE = "help";
+
+    @Override
+    public String getName() { return NAME; }
+    @Override
+    public String getDescription() { return DESC; }
+    @Override
+    public String getUsage() { return USAGE; }
+
+    private final Map<String, Supplier<Command>> commandRegistry;
+
+    public HelpCommand(Map<String, Supplier<Command>> registry) {
+        commandRegistry = registry;
+    }
 
     @Override
     public void execute(String[] args) {
         System.out.println("Command List:");
         System.out.println("--------------");
-        System.out.println("\t- help");
-        System.out.println("\t- exit");
+        for (Map.Entry<String, Supplier<Command>> entry : commandRegistry.entrySet()) {
+            Command command = entry.getValue().get();
+            System.out.println("\t " + command.getName() + " - Usage: " + command.getUsage());
+            System.out.println("\t\t" + command.getDescription() + "\n");
+        }
     }
 
     /**
