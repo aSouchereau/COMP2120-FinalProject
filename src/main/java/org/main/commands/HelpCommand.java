@@ -3,7 +3,22 @@ package org.main.commands;
 /**
  * Prints menu options and usage information for main program.
  */
-public class HelpCommand implements ICommand {
+public class HelpCommand extends Command {
+
+    @Override
+    public String getName() {
+        return "help";
+    }
+
+    @Override
+    public String getDescription() {
+        return "List command options and usage information.";
+    }
+
+    @Override
+    public String getUsage() {
+        return "help";
+    }
 
     @Override
     public void execute(String[] args) {

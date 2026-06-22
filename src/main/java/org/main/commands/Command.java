@@ -1,12 +1,15 @@
 package org.main.commands;
 
-public interface ICommand {
+public abstract class Command {
+    public abstract String getName();
+    public abstract String getDescription();
+    public abstract String getUsage();
 
     /**
      * @param args unstructured array of String arguments.
      *             Make sure to document what each argument index corresponds to.
      */
-    void execute(String[] args);
+    public abstract void execute(String[] args);
 
     /**
      * Should perform the exact opposite of tasks in the execute method.
@@ -14,5 +17,5 @@ public interface ICommand {
      * Undo method is required to be implemented.
      * Implement it, but leave the definition empty if your command doesn't need to undo anything
      */
-    void undo();
+    public abstract void undo();
 }
