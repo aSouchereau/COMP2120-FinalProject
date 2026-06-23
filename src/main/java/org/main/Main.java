@@ -1,13 +1,15 @@
 package org.main;
 
-import org.main.commands.Command;
-import org.main.commands.ExampleCommand;
-import org.main.commands.HelpCommand;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Scanner;
 import java.util.function.Supplier;
+
+import org.main.commands.AddUserCommand;
+import org.main.commands.Command;
+import org.main.commands.ExampleCommand;
+import org.main.commands.HelpCommand;
 
 public class Main {
     private static final CommandInvoker invoker =  new CommandInvoker();
@@ -19,6 +21,7 @@ public class Main {
     private static void registerCommands() {
         commandRegistry.put(HelpCommand.NAME, () -> new HelpCommand(commandRegistry));
         commandRegistry.put(ExampleCommand.NAME, ExampleCommand::new);
+        commandRegistry.put("adduser", AddUserCommand::new);
     }
 
     public static void main(String[] args) {
