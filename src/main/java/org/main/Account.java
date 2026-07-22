@@ -9,7 +9,7 @@ public abstract class Account {
 	
 	private ArrayList<Transaction> transactions;
 	
-	
+	// Constructor
 	public Account(String accountNumber, String customerName, double balance) {
 		this.accountNumber = accountNumber;
 		this.customerName = customerName;
@@ -17,17 +17,19 @@ public abstract class Account {
 		this.transactions = new ArrayList<>();
 	}
 	
-	public void deposit(double amount) {
+	// Deposit Method
+	public synchronized void deposit(double amount) {
 		if (amount <= 0) {
 			throw new IllegalArgumentException("Deposit amount must be greater than 0");
 		}
 		
 		balance += amount;
 		
-		transactions.add(new Transaction("Deposit", amount,"Deposit made to account" + accountNumber));
+		transactions.add(new Transaction("Deposit", amount," Deposit made to account" + accountNumber));
 	}
 	
-	public void withdraw(double amount) {
+	// Withdraw method
+	public synchronized void withdraw(double amount) {
 		if (amount <= 0) {
 			throw new IllegalArgumentException("Withdraw amount must be greater than 0");
 		}
@@ -38,20 +40,27 @@ public abstract class Account {
 		
 		balance -= amount;
 		
-		transactions.add(new Transaction("Withdraw", amount,"Withdraw made from account" + accountNumber));
+		transactions.add(new Transaction("Withdraw", amount," Withdraw made from account" + accountNumber));
 	}
 	
-	public void transfer(Account targetAccount, double amount) {
+	// Transfer between two accounts
+	public synchronized void transfer(Account targetAccount, double amount) {
 		if (targetAccount == null) {
-			throw new IllegalArgumentException("Target accouunt cannot be null.");
+			throw new IllegalArgumentException("Target account cannot be null.");
+		}
+		
+		// Prevents sending money to the same account
+		if (targetAccount == this) {
+			throw new IllegalArgumentException("Cannot transfer to the same account");
 		}
 		
 		this.withdraw(amount);
 		targetAccount.deposit(amount);
 		
-		transactions.add(new Transaction("Transfer", amount, "Transferred $" + amount + "to account " + targetAccount.getAccountNumber()));
+		transactions.add(new Transaction("Transfer", amount, " Transferred $" + amount + " to account " + targetAccount.getAccountNumber()));
 	}
 	
+	// Getters
 	public String getAccountNumber() {
 		return accountNumber;
 	}
@@ -64,6 +73,7 @@ public abstract class Account {
 		return balance;
 	}
 	
+	// Setter
 	public void setCustomerName(String customerName) {
 		this.customerName = customerName;
 	}
@@ -74,11 +84,26 @@ public abstract class Account {
 	
 	public abstract String getAccountType();
 	
+	
+	// Prints list of transactions
+	public void displayTransactions() {
+		if (transactions.isEmpty()) {
+			System.out.println("No transactions found.");
+			return;
+		}
+		
+		for (Transaction transaction : transactions) {
+			System.out.println(transaction);
+		}
+		
+	}
+	
+	
 	@Override
 	public String toString() {
 		return "Account Number: " + accountNumber +
 				"\nCustomer Name: " + customerName +
-				"\nAccount Typer: " + getAccountType() +
+				"\nAccount Type: " + getAccountType() +
 				"\nBalance: $" + balance;
 	}
 	
