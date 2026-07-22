@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Bank {
     private static final List<User> users = new ArrayList<>();
-    private static final List<Account> account = new ArrayList<>();
+    private static final List<Account> accounts = new ArrayList<>();
     
     public static void addUser(User user) {
         users.add(user);
@@ -20,4 +20,9 @@ public class Bank {
     public static List<User> getUsers() {
         return users;
     }
+    
+    public static List<Account> getAccounts() {
+    	return accounts;
+    }
+    
 }
