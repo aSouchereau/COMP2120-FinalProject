@@ -14,6 +14,7 @@ import org.main.commands.AddAccountCommand;
 import org.main.commands.DepositCommand;
 import org.main.commands.WithdrawCommand;
 import org.main.commands.TransferCommand;
+import org.main.commands.ViewAccountCommand;
 
 public class Main {
     private static final CommandInvoker invoker =  new CommandInvoker();
@@ -30,6 +31,7 @@ public class Main {
         commandRegistry.put("deposit", DepositCommand::new);
         commandRegistry.put("withdraw", WithdrawCommand::new);
         commandRegistry.put("transfer", TransferCommand::new);
+        commandRegistry.put("viewaccount", ViewAccountCommand::new);
     }
 
     public static void main(String[] args) {
