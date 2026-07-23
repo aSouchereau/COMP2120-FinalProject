@@ -25,4 +25,16 @@ public class Bank {
     	return accounts;
     }
     
+    public static Account findAccountByNumber(String accountNumber) {
+    	for (Account account : accounts) {
+    		if (account.getAccountNumber().equals(accountNumber)) {
+    			return account;
+    		}
+    	}
+
+    	return null;
+    	
+    }
+    
+
 }
