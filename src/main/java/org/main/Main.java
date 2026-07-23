@@ -11,6 +11,7 @@ import org.main.commands.Command;
 import org.main.commands.ExampleCommand;
 import org.main.commands.HelpCommand;
 import org.main.commands.AddAccountCommand;
+import org.main.commands.DepositCommand;
 
 public class Main {
     private static final CommandInvoker invoker =  new CommandInvoker();
@@ -24,6 +25,7 @@ public class Main {
         commandRegistry.put(ExampleCommand.NAME, ExampleCommand::new);
         commandRegistry.put("adduser", AddUserCommand::new);
         commandRegistry.put("addaccount", AddAccountCommand::new);
+        commandRegistry.put("deposit", DepositCommand::new);
     }
 
     public static void main(String[] args) {
