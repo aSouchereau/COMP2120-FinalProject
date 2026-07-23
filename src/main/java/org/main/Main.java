@@ -10,6 +10,7 @@ import org.main.commands.AddUserCommand;
 import org.main.commands.Command;
 import org.main.commands.ExampleCommand;
 import org.main.commands.HelpCommand;
+import org.main.commands.AddAccountCommand;
 
 public class Main {
     private static final CommandInvoker invoker =  new CommandInvoker();
@@ -22,6 +23,7 @@ public class Main {
         commandRegistry.put(HelpCommand.NAME, () -> new HelpCommand(commandRegistry));
         commandRegistry.put(ExampleCommand.NAME, ExampleCommand::new);
         commandRegistry.put("adduser", AddUserCommand::new);
+        commandRegistry.put("addaccount", AddAccountCommand::new);
     }
 
     public static void main(String[] args) {
