@@ -4,15 +4,15 @@ import java.util.ArrayList;
 
 public abstract class Account {
 	private String accountNumber;
-	private String customerName;
+	private User owner;
 	protected double balance;
 	
 	private ArrayList<Transaction> transactions;
 	
 	// Constructor
-	public Account(String accountNumber, String customerName, double balance) {
+	public Account(String accountNumber, User owner, double balance) {
 		this.accountNumber = accountNumber;
-		this.customerName = customerName;
+		this.owner = owner;
 		this.balance = balance;
 		this.transactions = new ArrayList<>();
 	}
@@ -65,18 +65,14 @@ public abstract class Account {
 		return accountNumber;
 	}
 	
-	public String getCustomerName() {
-		return customerName;
+	public User getOwner() {
+		return owner;
 	}
 	
 	public double getBalance() {
 		return balance;
 	}
 	
-	// Setter
-	public void setCustomerName(String customerName) {
-		this.customerName = customerName;
-	}
 	
 	public ArrayList<Transaction> getTransactions() {
 		return transactions;
@@ -102,7 +98,7 @@ public abstract class Account {
 	@Override
 	public String toString() {
 		return "Account Number: " + accountNumber +
-				"\nCustomer Name: " + customerName +
+				"\nCustomer Name: " + owner.getName() +
 				"\nAccount Type: " + getAccountType() +
 				"\nBalance: $" + balance;
 	}

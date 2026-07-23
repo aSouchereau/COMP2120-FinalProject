@@ -36,5 +36,16 @@ public class Bank {
     	
     }
     
+    public static User findUserById(int userId) {
+    	for (User user : users) {
+    		if (user.getUserId() == userId) {
+    			return user;
+    		}
+    	}
+    	
+    	return null; 
+    	
+    }
+    
 
 }

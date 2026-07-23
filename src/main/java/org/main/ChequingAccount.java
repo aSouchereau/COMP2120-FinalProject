@@ -4,8 +4,8 @@ public class ChequingAccount extends Account {
 	//gives a max amount that your account can fall below $0
 	private double overdraftLimit;
 	
-	public ChequingAccount(String accountNumber, String customerName, double balance, double overdraftLimit) {
-		super(accountNumber, customerName, balance);
+	public ChequingAccount(String accountNumber, User owner, double balance, double overdraftLimit) {
+		super(accountNumber, owner, balance);
 		this.overdraftLimit = overdraftLimit;
 	}
 	
