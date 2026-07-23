@@ -23,7 +23,7 @@ public class WithdrawCommand extends Command {
 	@Override
 	public void execute(String[] args) {
 		
-		if (args.length > 2) {
+		if (args.length < 2) {
 			System.out.println(getUsage());
 			return;
 		}

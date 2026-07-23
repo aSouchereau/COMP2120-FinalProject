@@ -13,6 +13,7 @@ import org.main.commands.HelpCommand;
 import org.main.commands.AddAccountCommand;
 import org.main.commands.DepositCommand;
 import org.main.commands.WithdrawCommand;
+import org.main.commands.TransferCommand;
 
 public class Main {
     private static final CommandInvoker invoker =  new CommandInvoker();
@@ -28,6 +29,7 @@ public class Main {
         commandRegistry.put("addaccount", AddAccountCommand::new);
         commandRegistry.put("deposit", DepositCommand::new);
         commandRegistry.put("withdraw", WithdrawCommand::new);
+        commandRegistry.put("transfer", TransferCommand::new);
     }
 
     public static void main(String[] args) {
