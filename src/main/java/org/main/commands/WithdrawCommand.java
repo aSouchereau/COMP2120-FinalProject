@@ -5,6 +5,8 @@ import org.main.Bank;
 
 public class WithdrawCommand extends Command {
 
+	Bank bank;
+
 	@Override
 	public String getName() {
 		return "withdraw";
@@ -19,7 +21,9 @@ public class WithdrawCommand extends Command {
 	public String getUsage() {
 		return "withdraw <accountNumber> <amount>";
 	}
-	
+
+	public WithdrawCommand(Bank bank) { this.bank = bank; }
+
 	@Override
 	public void execute(String[] args) {
 		
@@ -34,7 +38,7 @@ public class WithdrawCommand extends Command {
 			
 			double amount = Double.parseDouble(args[1]);
 			
-			Account account = Bank.findAccountByNumber(accountNumber);
+			Account account = bank.findAccountByNumber(accountNumber);
 			
 			if (account == null) {
 				System.out.println("Account not found");

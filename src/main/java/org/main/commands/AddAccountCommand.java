@@ -7,7 +7,9 @@ import org.main.SavingsAccount;
 import org.main.User;
 
 public class AddAccountCommand extends Command {
-	
+
+	Bank bank;
+
 	@Override
 	public String getName() {
 		return "addaccount";
@@ -22,8 +24,8 @@ public class AddAccountCommand extends Command {
 	public String getUsage() {
 		return "addaccount <accountNumber> <userId> <chequing/savings> <balance> <overdraftLimit/interestRate>";
 	}
-	
-	
+
+	public AddAccountCommand(Bank bank) { this.bank = bank; }
 	
 	@Override
 	public void execute(String[] args) {
@@ -43,7 +45,7 @@ public class AddAccountCommand extends Command {
 		double startingBalance = Double.parseDouble(args[3]);
 		double accountOption = Double.parseDouble(args[4]);
 		
-		User owner = Bank.findUserById(userId);
+		User owner = bank.findUserById(userId);
 		
 		if (owner == null) {
 			System.out.println("User not found.");
@@ -66,7 +68,7 @@ public class AddAccountCommand extends Command {
 			return;
 		}
 		
-		Bank.addAccount(account);
+		bank.addAccount(account);
 		
 		System.out.println("Account successfully created.");
 		

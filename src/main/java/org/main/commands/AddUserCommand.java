@@ -8,6 +8,7 @@ public class AddUserCommand extends Command {
     public static final String NAME = "adduser";
     public static final String DESC = "Registers a new banking user.";
     public static final String USAGE = "adduser <name> <email> <phone>";
+    private final Bank bank;
 
     private User lastAddedUser = null;
 
@@ -17,6 +18,8 @@ public class AddUserCommand extends Command {
     public String getDescription() { return DESC; }
     @Override
     public String getUsage() { return USAGE; }
+
+    public AddUserCommand(Bank bank) { this.bank = bank; }
 
     @Override
     public void execute(String[] args) {
@@ -30,14 +33,14 @@ public class AddUserCommand extends Command {
         String phone = args[2];
 
         User user = new User(name, email, phone);
-        Bank.addUser(user);
+        bank.addUser(user);
         lastAddedUser = user;
     }
 
     @Override
     public void undo() {
         if (lastAddedUser != null) {
-            Bank.getUsers().remove(lastAddedUser);
+            bank.getUsers().remove(lastAddedUser);
             System.out.println("Undo: removed user " + lastAddedUser.getName());
         }
     }

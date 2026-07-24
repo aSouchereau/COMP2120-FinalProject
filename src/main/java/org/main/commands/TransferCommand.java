@@ -5,6 +5,8 @@ import org.main.Bank;
 
 public class TransferCommand extends Command {
 
+	Bank bank;
+
 	@Override
 	public String getName() {
 		return "transfer";
@@ -19,6 +21,8 @@ public class TransferCommand extends Command {
 	public String getUsage() {
 		return "transfer <fromAccount> <toAccount> <amount>";
 	}
+
+	public TransferCommand(Bank bank) { this.bank = bank; }
 	
 	@Override
 	public void execute(String[] args) {
@@ -35,8 +39,8 @@ public class TransferCommand extends Command {
 			
 			double amount = Double.parseDouble(args[2]);
 			
-			Account fromAccount = Bank.findAccountByNumber(fromAccountNumber);
-			Account toAccount = Bank.findAccountByNumber(toAccountNumber);
+			Account fromAccount = bank.findAccountByNumber(fromAccountNumber);
+			Account toAccount = bank.findAccountByNumber(toAccountNumber);
 			
 			if (fromAccount == null) {
 				System.out.println("Sending account not found");

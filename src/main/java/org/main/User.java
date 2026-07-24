@@ -1,6 +1,8 @@
 package org.main;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
     private static int nextId = 1;
 
     private final int userId;

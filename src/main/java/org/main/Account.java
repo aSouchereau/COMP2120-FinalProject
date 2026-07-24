@@ -1,8 +1,9 @@
 package org.main;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class Account {
+public abstract class Account implements Serializable {
 	private String accountNumber;
 	private User owner;
 	protected double balance;

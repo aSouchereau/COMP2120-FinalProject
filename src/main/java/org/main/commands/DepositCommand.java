@@ -5,6 +5,8 @@ import org.main.Bank;
 
 public class DepositCommand extends Command {
 
+	Bank bank;
+
 	@Override
 	public String getName() {
 		return "deposit";
@@ -19,6 +21,8 @@ public class DepositCommand extends Command {
 	public String getUsage() {
 		return "deposit <accountNumber> <amount>";
 	}
+
+	public DepositCommand(Bank bank) { this.bank = bank; }
 	
 	@Override
 	public void execute(String[] args) {
@@ -34,7 +38,7 @@ public class DepositCommand extends Command {
 			
 			double amount = Double.parseDouble(args[1]);
 			
-			Account account = Bank.findAccountByNumber(accountNumber);
+			Account account = bank.findAccountByNumber(accountNumber);
 			
 			if (account == null) {
 				System.out.println("Account not found");

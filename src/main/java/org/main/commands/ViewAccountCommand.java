@@ -5,6 +5,8 @@ import org.main.Bank;
 
 public class ViewAccountCommand extends Command {
 
+	Bank bank;
+
 	@Override
 	public String getName() {
 		return "viewaccount";
@@ -19,6 +21,8 @@ public class ViewAccountCommand extends Command {
 	public String getUsage() {
 		return "viewaccount <accountNumber>";
 	}
+
+	public ViewAccountCommand(Bank bank) { this.bank = bank; }
 	
 	@Override
 	public void execute(String[] args) {
@@ -30,7 +34,7 @@ public class ViewAccountCommand extends Command {
 		
 		String accountNumber = args[0];
 		
-		Account account = Bank.findAccountByNumber(accountNumber);
+		Account account = bank.findAccountByNumber(accountNumber);
 		
 		if (account == null) {
 			System.out.println("Account not found.");
