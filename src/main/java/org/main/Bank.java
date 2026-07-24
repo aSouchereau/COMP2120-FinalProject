@@ -72,6 +72,17 @@ public class Bank implements Serializable {
         return results;
     }
 
+    public List<Account> getAccountsByName(String name) {
+    List<Account> results = new ArrayList<>();
+    for (Account acc : accounts) {
+        if (acc.getOwner().getName().equalsIgnoreCase(name)) {
+            results.add(acc);
+        }
+    }
+    return results;
+}
+
+
 
     public void save() {
         try {

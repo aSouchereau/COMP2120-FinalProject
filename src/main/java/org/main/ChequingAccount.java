@@ -21,7 +21,7 @@ public class ChequingAccount extends Account {
 		
 		balance -= amount;
 		
-		getTransactions().add(new Transaction("Withdraw", amount, "Withdrawa; made from chequing account " + getAccountNumber()));
+		getTransactions().add(new Transaction("Withdraw", amount, "Withdraw; made from chequing account " + getAccountNumber()));
 		
 	}
 	

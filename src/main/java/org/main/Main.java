@@ -11,6 +11,7 @@ import org.main.commands.AddUserCommand;
 import org.main.commands.Command;
 import org.main.commands.DepositCommand;
 import org.main.commands.HelpCommand;
+import org.main.commands.ReportByNameCommand;
 import org.main.commands.SearchByNameCommand;
 import org.main.commands.SeedDataCommand;
 import org.main.commands.TransferCommand;
@@ -36,6 +37,9 @@ public class Main {
         commandRegistry.put("viewaccount", () -> new ViewAccountCommand(bank));
         commandRegistry.put("seeddata", () -> new SeedDataCommand(bank));
         commandRegistry.put("search-name", () -> new SearchByNameCommand(bank));
+        commandRegistry.put("report-name", () -> new ReportByNameCommand(bank));
+
+
     }
 
     public static void main(String[] args) {
