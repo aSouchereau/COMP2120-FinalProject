@@ -1,6 +1,8 @@
 package org.main;
 
-public class Transaction {
+import java.io.Serializable;
+
+public class Transaction implements Serializable {
 	private String type;
 	private double amount;
 	private String description;
