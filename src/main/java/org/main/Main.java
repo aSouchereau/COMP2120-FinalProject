@@ -6,15 +6,8 @@ import java.util.Objects;
 import java.util.Scanner;
 import java.util.function.Supplier;
 
-import org.main.commands.AddUserCommand;
-import org.main.commands.Command;
-import org.main.commands.HelpCommand;
-import org.main.commands.AddAccountCommand;
+import org.main.commands.*;
 import org.main.exceptions.InvalidSaveDataException;
-import org.main.commands.DepositCommand;
-import org.main.commands.WithdrawCommand;
-import org.main.commands.TransferCommand;
-import org.main.commands.ViewAccountCommand;
 
 public class Main {
     private static final CommandInvoker invoker =  new CommandInvoker();
@@ -32,6 +25,7 @@ public class Main {
         commandRegistry.put("withdraw", () -> new WithdrawCommand(bank));
         commandRegistry.put("transfer", () -> new TransferCommand(bank));
         commandRegistry.put("viewaccount", () -> new ViewAccountCommand(bank));
+        commandRegistry.put("seeddata", () -> new SeedDataCommand(bank));
     }
 
     public static void main(String[] args) {
