@@ -32,7 +32,7 @@ public class AddUserCommand extends Command {
         String email = args[1];
         String phone = args[2];
 
-        User user = new User(name, email, phone);
+        User user = new User(bank.getUsers().size() + 1, name, email, phone);
         bank.addUser(user);
         lastAddedUser = user;
     }

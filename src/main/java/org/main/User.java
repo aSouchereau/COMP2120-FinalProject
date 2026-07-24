@@ -3,15 +3,14 @@ package org.main;
 import java.io.Serializable;
 
 public class User implements Serializable {
-    private static int nextId = 1;
 
     private final int userId;
     private String name;
     private String email;
     private String phone;
 
-    public User(String name, String email, String phone) {
-        this.userId = nextId++;
+    public User(int id, String name, String email, String phone) {
+        this.userId = id;
         this.name = name;
         this.email = email;
         this.phone = phone;
