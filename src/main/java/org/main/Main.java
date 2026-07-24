@@ -64,12 +64,15 @@ public class Main {
                     commandArgs = command[1].split(" ");
                 }
                 if (Objects.equals(command[0], "exit")) break;
+                if (Objects.equals(command[0], "undo")) {
+                    invoker.undoCommand();
+                    continue;
+                }
                 if (command[0].isEmpty()) continue;
                 try {
                     invoker.executeCommand(commandRegistry.get(command[0]).get(),  commandArgs);
                 } catch (NullPointerException e) {
                     System.out.println(command[0] + ": Command not found. Type \"help\" for a list of commands.");
-                    continue;
                 }
             }
         }
