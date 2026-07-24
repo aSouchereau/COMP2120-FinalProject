@@ -8,7 +8,6 @@ import java.util.function.Supplier;
 
 import org.main.commands.AddUserCommand;
 import org.main.commands.Command;
-import org.main.commands.ExampleCommand;
 import org.main.commands.HelpCommand;
 import org.main.commands.AddAccountCommand;
 import org.main.exceptions.InvalidSaveDataException;
@@ -27,7 +26,6 @@ public class Main {
      */
     private static void registerCommands(Bank bank) {
         commandRegistry.put(HelpCommand.NAME, () -> new HelpCommand(commandRegistry));
-        commandRegistry.put(ExampleCommand.NAME, () -> new ExampleCommand(bank));
         commandRegistry.put(AddUserCommand.NAME, () -> new AddUserCommand(bank));
         commandRegistry.put("addaccount", () -> new AddAccountCommand(bank));
         commandRegistry.put("deposit", () -> new DepositCommand(bank));
