@@ -1,9 +1,16 @@
 package org.main;
 
-import org.main.exceptions.InvalidSaveDataException;
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.main.exceptions.InvalidSaveDataException;
 
 public class Bank implements Serializable {
     private final String saveDataFilename;
@@ -53,6 +60,16 @@ public class Bank implements Serializable {
     	
     	return null; 
     	
+    }
+
+    public List<Account> searchByCustomerName(String name) {
+        List<Account> results = new ArrayList<>();
+        for (Account acc : accounts) {
+            if (acc.getOwner().getName().equalsIgnoreCase(name)) {
+                results.add(acc);
+            }
+        }
+        return results;
     }
 
 
