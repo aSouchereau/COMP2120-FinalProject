@@ -1,26 +1,26 @@
 package org.main;
 
 public class SavingsAccount extends Account {
-	private double intrestRate;
+	private double interestRate;
 	
-	public SavingsAccount(String accountNumber, User owner, double balance, double intrestRate) {
+	public SavingsAccount(String accountNumber, User owner, double balance, double interestRate) {
 		super(accountNumber,owner,balance);
-		this.intrestRate = intrestRate;
+		this.interestRate = interestRate;
 	}
 	
-	public void addIntrest() {
-		double intrest = balance * intrestRate;
-		balance += intrest;
+	public void addInterest() {
+		double interest = balance * interestRate;
+		balance += interest;
 		
-		getTransactions().add(new Transaction("Intrest", intrest, "Intrest added to savings account " + getAccountNumber()));
+		getTransactions().add(new Transaction("Interest", interest, "Interest added to savings account " + getAccountNumber()));
 	}
 	
-	public double getIntrestRate() {
-		return intrestRate;
+	public double getInterestRate() {
+		return interestRate;
 	}
 	
-	public void setIntrestRate(double intrestRate) {
-		this.intrestRate = intrestRate;
+	public void setInterestRate(double interestRate) {
+		this.interestRate = interestRate;
 	}
 	
 	@Override
