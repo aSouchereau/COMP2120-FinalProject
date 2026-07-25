@@ -42,6 +42,7 @@ public class DepositCommand extends Command {
 			
 			if (account == null) {
 				System.out.println("Account not found");
+				return;
 			}
 			
 			account.deposit(amount);
