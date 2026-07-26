@@ -22,12 +22,12 @@ public class CommandInvoker {
      */
     public void undoCommand() {
         try {
-            Command command = commandHistory.pop();
-            command.undo();
-
             if (commandHistory.isEmpty()) {
                 throw new EmptyStackException();
             }
+
+            Command command = commandHistory.pop();
+            command.undo();
         } catch (EmptyStackException e) {
             System.out.println("Nothing to undo");
         }
