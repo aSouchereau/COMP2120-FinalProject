@@ -2,6 +2,7 @@ package org.main;
 
 import org.main.commands.Command;
 
+import java.util.EmptyStackException;
 import java.util.Stack;
 
 public class CommandInvoker {
@@ -20,9 +21,15 @@ public class CommandInvoker {
      * Removes executed command from the top of history stack, and calls its undo method
      */
     public void undoCommand() {
-        Command command = commandHistory.pop();
-        if (command != null) {
+        try {
+            Command command = commandHistory.pop();
             command.undo();
+
+            if (commandHistory.isEmpty()) {
+                throw new EmptyStackException();
+            }
+        } catch (EmptyStackException e) {
+            System.out.println("Nothing to undo");
         }
     }
 }
