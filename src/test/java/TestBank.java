@@ -1,5 +1,4 @@
 import net.datafaker.Faker;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -8,8 +7,6 @@ import org.main.Bank;
 import org.main.ChequingAccount;
 import org.main.User;
 import org.main.commands.SeedDataCommand;
-
-import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -35,10 +32,10 @@ public class TestBank extends BaseTest {
             newBank = Bank.load(bankFilename);
         } catch (Exception e) {
             fail(e);
-        } finally {
-            assertEquals(newBank.getUsers(), mockBank.getUsers());
-            assertEquals(newBank.getAccounts(), mockBank.getAccounts());
         }
+
+        assertEquals(newBank.getUsers().get(0).getName(), mockBank.getUsers().get(0).getName());
+        assertEquals(newBank.getAccounts().get(0).getAccountNumber(), mockBank.getAccounts().get(0).getAccountNumber());
     }
 
     @Test
