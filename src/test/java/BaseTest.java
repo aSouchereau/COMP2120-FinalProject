@@ -6,11 +6,11 @@ public abstract class BaseTest {
     protected String bankFilename = "testBankData.ser";
 
     @BeforeEach
-    public void setUp() {
+    public void setup() {
         mockBank = new Bank(bankFilename);
     }
 
-    protected void cleanUp() {
+    protected void cleanup() {
     }
 
 }
